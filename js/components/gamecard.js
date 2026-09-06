@@ -1,7 +1,4 @@
-
-import { esFavorito, alternarFavorito } from '../utils/localstorage.js';
-
-export function crearTarjetaJuego(juego, onCambioFavorito) {
+export function crearTarjetaJuego(juego) {
   const contenedor = document.createElement('article');
   contenedor.className = 'card';
 
@@ -40,24 +37,7 @@ export function crearTarjetaJuego(juego, onCambioFavorito) {
   enlaceDetalle.href = `#/detalle/${juego.id}`;
   enlaceDetalle.textContent = 'Ver detalle';
 
-  const botonFavorito = document.createElement('button');
-  botonFavorito.type = 'button';
-  botonFavorito.className = 'card__favorito';
-  const estaEnFavoritos = esFavorito(juego.id);
-  botonFavorito.textContent = estaEnFavoritos ? '★' : '☆';
-  botonFavorito.classList.toggle('card__favorito--activo', estaEnFavoritos);
-  botonFavorito.setAttribute('aria-label', estaEnFavoritos ? 'Quitar de favoritos' : 'Agregar a favoritos');
-  botonFavorito.addEventListener('click', () => {
-    const quedoFavorito = alternarFavorito(juego);
-    botonFavorito.textContent = quedoFavorito ? '★' : '☆';
-    botonFavorito.classList.toggle('card__favorito--activo', quedoFavorito);
-    botonFavorito.setAttribute('aria-label', quedoFavorito ? 'Quitar de favoritos' : 'Agregar a favoritos');
-    if (typeof onCambioFavorito === 'function') {
-      onCambioFavorito(quedoFavorito);
-    }
-  });
-
-  acciones.append(enlaceDetalle, botonFavorito);
+  acciones.append(enlaceDetalle);
   cuerpo.append(titulo, descripcion, tags, acciones);
   contenedor.append(imagen, cuerpo);
 

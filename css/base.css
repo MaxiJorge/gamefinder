@@ -1,0 +1,92 @@
+:root {
+  --color-fondo: #14101f;
+  --color-tarjeta: #1c1730;
+  --color-borde: #332a4d;
+  --color-borde-hover: #f5a623;
+  --color-texto: #f4f1fb;
+  --color-texto-secundario: #a99bcf;
+  --color-tag-fondo: #291f45;
+  --color-tag-texto: #d7c6ff;
+  --color-acento: #f5a623;
+  --color-acento-texto: #1c1730;
+  --color-favorito-activo: #ff6fa5;
+
+  --fuente-titulo: 'Space Grotesk', sans-serif;
+  --fuente-cuerpo: 'IBM Plex Sans', sans-serif;
+  --radio-tarjeta: 14px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-cuerpo);
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+#vista {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  #app {
+    padding-bottom: 0;
+  }
+}
+
+.pagina-general {
+  padding: 1.5rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.seccion-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.seccion-header .seccion__titulo {
+  justify-content: center;
+}
+
+.seccion-header .seccion__titulo::after {
+  display: none;
+}
+
+.mensaje-vacio,
+.mensaje-error {
+  text-align: center;
+  color: var(--color-texto-secundario);
+  margin: 3rem 0;
+  font-size: 1.1rem;
+}
+
+.mensaje-feedback {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.mensaje-feedback.exito {
+  background: rgba(82, 224, 133, 0.1);
+  color: #52e085;
+  border: 1px solid #52e085;
+}
+
+.oculto {
+  display: none !important;
+}

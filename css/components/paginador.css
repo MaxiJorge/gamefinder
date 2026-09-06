@@ -1,0 +1,18 @@
+.paginador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.paginador__indicador {
+  font-weight: 600;
+  color: var(--color-texto-secundario);
+}
+
+.paginador__btn {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+}

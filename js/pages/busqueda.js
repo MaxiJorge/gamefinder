@@ -28,34 +28,50 @@ const GENEROS = [
 
 export async function renderBusqueda(contenedor) {
   const main = document.createElement('main');
+  main.className = 'pagina-general';
+  
   main.innerHTML = `
-    <h1>Búsqueda de juegos</h1>
-    <form id="form-filtros">
-      <label for="filtro-genero">Género</label>
-      <select id="filtro-genero" name="genero">
-        ${GENEROS.map(([valor, etiqueta]) => `<option value="${valor}">${etiqueta}</option>`).join('')}
-      </select>
+    <div class="seccion-header">
+      <h1 class="seccion__titulo"><span class="seccion__icono">🔍</span> Búsqueda de Juegos</h1>
+      <p class="seccion__subtitulo">Encontrá tu próxima aventura filtrando por plataforma o género</p>
+    </div>
 
-      <label for="filtro-plataforma">Plataforma</label>
-      <select id="filtro-plataforma" name="plataforma">
-        <option value="all">Todas</option>
-        <option value="pc">PC</option>
-        <option value="browser">Navegador</option>
-      </select>
+    <form class="form-filtros" id="form-filtros">
+      <div class="form-grupo">
+        <label for="filtro-genero">Género</label>
+        <select id="filtro-genero" name="genero">
+          ${GENEROS.map(([valor, etiqueta]) => `<option value="${valor}">${etiqueta}</option>`).join('')}
+        </select>
+      </div>
 
-      <label for="filtro-orden">Ordenar por</label>
-      <select id="filtro-orden" name="orden">
-        <option value="relevance">Relevancia</option>
-        <option value="popularity">Popularidad</option>
-        <option value="release-date">Fecha de lanzamiento</option>
-        <option value="alphabetical">Alfabético</option>
-      </select>
+      <div class="form-grupo">
+        <label for="filtro-plataforma">Plataforma</label>
+        <select id="filtro-plataforma" name="plataforma">
+          <option value="all">Todas</option>
+          <option value="pc">PC</option>
+          <option value="browser">Navegador</option>
+        </select>
+      </div>
 
-      <button type="submit">Buscar</button>
+      <div class="form-grupo">
+        <label for="filtro-orden">Ordenar por</label>
+        <select id="filtro-orden" name="orden">
+          <option value="relevance">Relevancia</option>
+          <option value="popularity">Popularidad</option>
+          <option value="release-date">Fecha de lanzamiento</option>
+          <option value="alphabetical">Alfabético</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn-primario">Aplicar filtros</button>
     </form>
-    <p id="contador-resultados"></p>
-    <div id="grid-resultados"></div>
-    <div id="controles-paginacion"></div>
+    
+    <div class="resultados-info">
+      <p id="contador-resultados" class="contador-resultados"></p>
+    </div>
+    
+    <div id="grid-resultados" class="grid-resultados-contenedor"></div>
+    <div id="controles-paginacion" class="controles-paginacion-contenedor"></div>
   `;
   contenedor.appendChild(main);
 
@@ -125,6 +141,19 @@ export async function renderBusqueda(contenedor) {
     buscar();
   });
 
-  // Primera carga: todos los juegos, sin filtrar
+  // Pre-llenar filtros si vienen en la URL (ej: #/busqueda?plataforma=pc)
+  const hashUrl = window.location.hash;
+  if (hashUrl.includes('?')) {
+    const searchParams = new URLSearchParams(hashUrl.split('?')[1]);
+    const pGenero = searchParams.get('genero');
+    const pPlataforma = searchParams.get('plataforma');
+    const pOrden = searchParams.get('orden');
+
+    if (pGenero) formulario.genero.value = pGenero;
+    if (pPlataforma) formulario.plataforma.value = pPlataforma;
+    if (pOrden) formulario.orden.value = pOrden;
+  }
+
+  // Primera carga: todos los juegos, o filtrados si vinieron parámetros
   buscar();
 }
