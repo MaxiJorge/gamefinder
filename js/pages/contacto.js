@@ -1,7 +1,7 @@
 export function renderContacto(contenedor) {
   const main = document.createElement('main');
   main.className = 'pagina-general';
-  
+
   main.innerHTML = `
     <div class="seccion-header">
       <h1 class="seccion__titulo"><span class="seccion__icono">✉️</span> Contacto</h1>
@@ -34,6 +34,10 @@ export function renderContacto(contenedor) {
     
     <div id="mensaje-feedback" class="mensaje-feedback oculto">
       ¡Gracias por tu mensaje! Nos pondremos en contacto pronto.
+    </div>
+
+    <div class="seccion-footer">
+      <h1 class="seccion__titulo"><span class="seccion__icono">📍</span> Encontranos en:</h1>
     </div>
   `;
 

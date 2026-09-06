@@ -1,30 +1,30 @@
 const ENLACES = [
-  { ruta: '#/', texto: 'Inicio', icono: '🏠' },
-  { ruta: '#/busqueda', texto: 'Búsqueda', icono: '🔍' },
-  { ruta: '#/favoritos', texto: 'Favoritos', icono: '❤️' },
-  { ruta: '#/historial', texto: 'Historial', icono: '🕒' },
-  { ruta: '#/contacto', texto: 'Contacto', icono: '✉️' },
+  { ruta: '#/', texto: 'Inicio' },
+  { ruta: '#/busqueda', texto: 'Búsqueda' },
+  { ruta: '#/favoritos', texto: 'Favoritos' },
+  { ruta: '#/historial', texto: 'Historial' },
+  { ruta: '#/contacto', texto: 'Contacto' },
 ];
 
 export function crearNavbar() {
   const nav = document.createElement('nav');
   nav.className = 'navbar';
-  
+
   const lista = document.createElement('ul');
   lista.className = 'navbar__lista';
 
   ENLACES.forEach(({ ruta, texto, icono }) => {
     const item = document.createElement('li');
     item.className = 'navbar__item';
-    
+
     const enlace = document.createElement('a');
     enlace.className = 'navbar__enlace';
     enlace.href = ruta;
-    
+
     const iconSpan = document.createElement('span');
     iconSpan.className = 'navbar__icono';
     iconSpan.textContent = icono;
-    
+
     const textSpan = document.createElement('span');
     textSpan.className = 'navbar__texto';
     textSpan.textContent = texto;

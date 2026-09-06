@@ -134,7 +134,7 @@ function renderTop(main, juegos) {
 
   const MEDALLAS = ['ranking-item--oro', 'ranking-item--plata', 'ranking-item--bronce'];
 
-  juegos.slice(0, 10).forEach((juego, i) => {
+  juegos.slice(0, 5).forEach((juego, i) => {
     const item = document.createElement('li');
     item.className = 'ranking-item' + (i < 3 ? ` ${MEDALLAS[i]}` : '');
 
@@ -211,7 +211,7 @@ function renderGeneros(main) {
 // ─────────────────────────────────────────────────────────
 function renderMultiplayer(main, todosLosJuegos) {
   const MULTI = ['MMORPG', 'Battle Royale', 'Shooter', 'MOBA'];
-  const section = crearSeccion('👥', 'Multiplayer', '¿Buscás algo para jugar con amigos?');
+  const section = crearSeccion('👥', 'Multiplayer');
   const grid = document.createElement('div');
   grid.className = 'multi-grid';
 
@@ -252,10 +252,10 @@ function renderMultiplayer(main, todosLosJuegos) {
 // 7. JOYAS OCULTAS – Desde posición 100+
 // ─────────────────────────────────────────────────────────
 function renderJoyasOcultas(main, todosLosJuegos) {
-  const joyas = todosLosJuegos.slice(100, 107);
+  const joyas = todosLosJuegos.slice(100, 104);
   if (!joyas.length) return;
 
-  const section = crearSeccion('💎', 'Joyas Ocultas', 'Juegos gratuitos que merecen más atención');
+  const section = crearSeccion('💎', 'Joyas Ocultas');
   const grid = document.createElement('div');
   grid.className = 'grid-juegos';
   joyas.forEach((j) => grid.appendChild(crearTarjetaJuego(j)));
@@ -317,7 +317,7 @@ function renderPorqueViste(main, todosLosJuegos) {
 
   const similares = todosLosJuegos
     .filter((j) => j.genre === referencia.genre && j.id !== referencia.id)
-    .slice(0, 6);
+    .slice(0, 4);
 
   if (!similares.length) return;
 
@@ -383,8 +383,8 @@ export async function renderHome(contenedor) {
   const nuevos = newResult.status === 'fulfilled' ? newResult.value : [];
 
   renderHero(main, populares);
-  renderGrid(main, '🔥', 'Destacados', populares.slice(0, 7));
-  renderGrid(main, '🆕', 'Recién Agregados', nuevos.slice(0, 7));
+  renderGrid(main, '🔥', 'Destacados', populares.slice(0, 4));
+  renderGrid(main, '🆕', 'Recién Agregados', nuevos.slice(0, 4));
   renderTop(main, populares);
   renderGeneros(main);
   renderMultiplayer(main, populares);

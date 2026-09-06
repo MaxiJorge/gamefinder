@@ -29,12 +29,8 @@ const GENEROS = [
 export async function renderBusqueda(contenedor) {
   const main = document.createElement('main');
   main.className = 'pagina-general';
-  
+
   main.innerHTML = `
-    <div class="seccion-header">
-      <h1 class="seccion__titulo"><span class="seccion__icono">🔍</span> Búsqueda de Juegos</h1>
-      <p class="seccion__subtitulo">Encontrá tu próxima aventura filtrando por plataforma o género</p>
-    </div>
 
     <form class="form-filtros" id="form-filtros">
       <div class="form-grupo">
@@ -63,7 +59,7 @@ export async function renderBusqueda(contenedor) {
         </select>
       </div>
 
-      <button type="submit" class="btn-primario">Aplicar filtros</button>
+      <button type="submit" class="btn-primario">Buscar</button>
     </form>
     
     <div class="resultados-info">
