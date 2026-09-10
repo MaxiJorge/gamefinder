@@ -12,6 +12,7 @@
 @import url('./components/form.css');
 @import url('./components/paginador.css');
 @import url('./components/toast.css');
+@import url('./components/modal.css');
 
 /* Pages */
 @import url('./pages/detalle.css');

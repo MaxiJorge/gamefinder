@@ -38,7 +38,35 @@ export function crearTarjetaJuego(juego) {
   enlaceDetalle.textContent = 'Ver detalle';
 
   acciones.append(enlaceDetalle);
-  cuerpo.append(titulo, descripcion, tags, acciones);
+  cuerpo.append(titulo, descripcion, tags);
+
+  if (juego.categoria) {
+    const favoritoInfo = document.createElement('div');
+    favoritoInfo.className = 'card__favorito-info';
+
+    if (juego.prioridad) {
+      const prioridad = document.createElement('span');
+      prioridad.className = 'card__favorito-dato';
+      prioridad.textContent = `Prioridad: ${juego.prioridad}`;
+      favoritoInfo.appendChild(prioridad);
+    }
+
+    const categoria = document.createElement('span');
+    categoria.className = 'card__favorito-dato';
+    categoria.textContent = `Categoría: ${juego.categoria}`;
+    favoritoInfo.appendChild(categoria);
+
+    if (juego.nota) {
+      const nota = document.createElement('p');
+      nota.className = 'card__favorito-nota';
+      nota.textContent = juego.nota;
+      favoritoInfo.appendChild(nota);
+    }
+
+    cuerpo.appendChild(favoritoInfo);
+  }
+
+  cuerpo.appendChild(acciones);
   contenedor.append(imagen, cuerpo);
 
   return contenedor;

@@ -1,6 +1,7 @@
 import { obtenerJuegoPorId } from '../api/freetogameapi.js';
-import { agregarAlHistorial, esFavorito, alternarFavorito } from '../utils/localstorage.js';
+import { agregarAlHistorial, esFavorito, eliminarDeFavoritos } from '../utils/localstorage.js';
 import { mostrarToast } from '../components/toast.js';
+import { abrirModalAgregarFavorito } from '../components/modalFavorito.js';
 
 export async function renderDetalle(contenedor, parametros) {
   const main = document.createElement('main');
@@ -61,12 +62,16 @@ export async function renderDetalle(contenedor, parametros) {
     botonFavorito.className = 'btn-primario btn-favorito-detalle';
     botonFavorito.textContent = esFavorito(juego.id) ? '★ Quitar de favoritos' : '☆ Agregar a favoritos';
     botonFavorito.addEventListener('click', () => {
-      const quedoFavorito = alternarFavorito(juego);
-      botonFavorito.textContent = quedoFavorito ? '★ Quitar de favoritos' : '☆ Agregar a favoritos';
-      mostrarToast(
-        quedoFavorito ? `"${juego.title}" agregado a favoritos` : `"${juego.title}" quitado de favoritos`,
-        quedoFavorito ? 'favorito-agregado' : 'favorito-quitado'
-      );
+      if (esFavorito(juego.id)) {
+        eliminarDeFavoritos(juego.id);
+        botonFavorito.textContent = '☆ Agregar a favoritos';
+        mostrarToast(`"${juego.title}" quitado de favoritos`, 'favorito-quitado');
+        return;
+      }
+
+      abrirModalAgregarFavorito(juego, () => {
+        botonFavorito.textContent = '★ Quitar de favoritos';
+      });
     });
 
     infoBloque.append(descripcion, metaGrid, botonFavorito);

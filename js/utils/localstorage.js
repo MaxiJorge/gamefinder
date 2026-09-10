@@ -18,24 +18,15 @@ export function esFavorito(id) {
   return obtenerFavoritos().some((juego) => juego.id === id);
 }
 
-export function agregarAFavoritos(juego) {
+export function agregarAFavoritos(juego, detalles = {}) {
   const favoritos = obtenerFavoritos();
   if (!favoritos.some((j) => j.id === juego.id)) {
-    escribir(CLAVE_FAVORITOS, [...favoritos, juego]);
+    escribir(CLAVE_FAVORITOS, [...favoritos, { ...juego, ...detalles, agregadoEn: Date.now() }]);
   }
 }
 
 export function eliminarDeFavoritos(id) {
   escribir(CLAVE_FAVORITOS, obtenerFavoritos().filter((j) => j.id !== id));
-}
-
-export function alternarFavorito(juego) {
-  if (esFavorito(juego.id)) {
-    eliminarDeFavoritos(juego.id);
-    return false;
-  }
-  agregarAFavoritos(juego);
-  return true;
 }
 
 
