@@ -13,8 +13,6 @@ function pintar(contenedor) {
 
   main.innerHTML = `
     <div class="seccion-header">
-      <h1 class="seccion__titulo"><span class="seccion__icono">🕒</span> Historial de Vistas</h1>
-      <p class="seccion__subtitulo">Tus últimos juegos visitados</p>
     </div>
   `;
 
@@ -31,16 +29,16 @@ function pintar(contenedor) {
 
   const contenedorBtn = document.createElement('div');
   contenedorBtn.className = 'acciones-historial';
-  
+
   const btnBorrar = document.createElement('button');
   btnBorrar.type = 'button';
   btnBorrar.className = 'btn-secundario btn-borrar-historial';
   btnBorrar.textContent = '🗑️ Borrar historial';
   btnBorrar.addEventListener('click', () => {
     vaciarHistorial();
-    pintar(contenedor); 
+    pintar(contenedor);
   });
-  
+
   contenedorBtn.appendChild(btnBorrar);
   main.appendChild(contenedorBtn);
 

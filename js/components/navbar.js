@@ -1,14 +1,18 @@
 const ENLACES = [
-  { ruta: '#/', texto: 'Inicio' },
-  { ruta: '#/busqueda', texto: 'Búsqueda' },
-  { ruta: '#/favoritos', texto: 'Favoritos' },
-  { ruta: '#/historial', texto: 'Historial' },
-  { ruta: '#/contacto', texto: 'Contacto' },
+  { ruta: '#/', texto: 'Inicio', icono: '' },
+  { ruta: '#/busqueda', texto: 'Búsqueda', icono: '' },
+  { ruta: '#/favoritos', texto: 'Favoritos', icono: '' },
+  { ruta: '#/historial', texto: 'Historial', icono: '' },
+  { ruta: '#/contacto', texto: 'Contacto', icono: '' },
 ];
 
 export function crearNavbar() {
   const nav = document.createElement('nav');
   nav.className = 'navbar';
+
+  const brand = document.createElement('a');
+  brand.className = 'navbar__brand';
+  brand.href = '#/';
 
   const lista = document.createElement('ul');
   lista.className = 'navbar__lista';
@@ -35,6 +39,7 @@ export function crearNavbar() {
     lista.appendChild(item);
   });
 
+  nav.appendChild(brand);
   nav.appendChild(lista);
 
   function marcarActivo() {

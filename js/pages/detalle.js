@@ -4,7 +4,7 @@ import { agregarAlHistorial, esFavorito, alternarFavorito } from '../utils/local
 export async function renderDetalle(contenedor, parametros) {
   const main = document.createElement('main');
   main.className = 'pagina-general detalle-juego';
-  
+
   main.innerHTML = `
     <div class="seccion-header">
       <h1 class="seccion__titulo"><span class="seccion__icono">⏳</span> Cargando...</h1>
@@ -65,7 +65,7 @@ export async function renderDetalle(contenedor, parametros) {
     });
 
     infoBloque.append(descripcion, metaGrid, botonFavorito);
-    
+
     if (juego.game_url) {
       const linkOficial = document.createElement('a');
       linkOficial.className = 'btn-secundario btn-oficial';
@@ -83,11 +83,11 @@ export async function renderDetalle(contenedor, parametros) {
       const requisitos = juego.minimum_system_requirements;
       const seccionReq = document.createElement('div');
       seccionReq.className = 'detalle-requisitos';
-      
+
       const tituloReq = document.createElement('h2');
       tituloReq.className = 'seccion__titulo';
       tituloReq.innerHTML = '<span class="seccion__icono">💻</span> Requisitos mínimos';
-      
+
       const lista = document.createElement('ul');
       lista.className = 'requisitos-lista';
 
@@ -106,11 +106,11 @@ export async function renderDetalle(contenedor, parametros) {
     if (juego.screenshots && juego.screenshots.length > 0) {
       const seccionCapturas = document.createElement('div');
       seccionCapturas.className = 'detalle-capturas';
-      
+
       const tituloCapturas = document.createElement('h2');
       tituloCapturas.className = 'seccion__titulo';
       tituloCapturas.innerHTML = '<span class="seccion__icono">📸</span> Capturas';
-      
+
       const gridCapturas = document.createElement('div');
       gridCapturas.className = 'capturas-grid';
 
@@ -123,7 +123,7 @@ export async function renderDetalle(contenedor, parametros) {
         img.decoding = 'async';
         gridCapturas.appendChild(img);
       });
-      
+
       seccionCapturas.append(tituloCapturas, gridCapturas);
       main.appendChild(seccionCapturas);
     }

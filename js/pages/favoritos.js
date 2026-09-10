@@ -7,8 +7,6 @@ export function renderFavoritos(contenedor) {
 
   main.innerHTML = `
     <div class="seccion-header">
-      <h1 class="seccion__titulo"><span class="seccion__icono">❤️</span> Mis Favoritos</h1>
-      <p class="seccion__subtitulo">Tus juegos guardados para jugar más tarde</p>
     </div>
   `;
 
