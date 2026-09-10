@@ -1,5 +1,6 @@
 import { obtenerJuegoPorId } from '../api/freetogameapi.js';
 import { agregarAlHistorial, esFavorito, alternarFavorito } from '../utils/localstorage.js';
+import { mostrarToast } from '../components/toast.js';
 
 export async function renderDetalle(contenedor, parametros) {
   const main = document.createElement('main');
@@ -62,6 +63,10 @@ export async function renderDetalle(contenedor, parametros) {
     botonFavorito.addEventListener('click', () => {
       const quedoFavorito = alternarFavorito(juego);
       botonFavorito.textContent = quedoFavorito ? '★ Quitar de favoritos' : '☆ Agregar a favoritos';
+      mostrarToast(
+        quedoFavorito ? `"${juego.title}" agregado a favoritos` : `"${juego.title}" quitado de favoritos`,
+        quedoFavorito ? 'favorito-agregado' : 'favorito-quitado'
+      );
     });
 
     infoBloque.append(descripcion, metaGrid, botonFavorito);
