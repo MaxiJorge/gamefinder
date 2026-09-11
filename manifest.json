@@ -1,0 +1,25 @@
+{
+  "name": "GameFinder",
+  "short_name": "GameFinder",
+  "description": "Descubrí, buscá y guardá tus juegos gratuitos favoritos.",
+  "start_url": "/gamefinder/",
+  "scope": "/gamefinder/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#14101f",
+  "theme_color": "#f5a623",
+  "icons": [
+    {
+      "src": "/gamefinder/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/gamefinder/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
